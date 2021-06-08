@@ -3,17 +3,18 @@
  *
  * It recognizes as headers:
  *
- * * multiple single-line comments ``//`` with possibly blank
+ * - multiple single-line comments ``//`` with possibly blank
  *   inter-lines, that appear as first non blank lines (except ``package``)
  *   or just after lines considered as headers too.
  *
- * * multiple lines in a multi-line comment ``/* … */`` that appear as first
+ * - multiple lines in a multi-line comment ``/* … */`` that appear as first
  *   non blank lines (except ``package``)
  *   or just after lines considered as headers too.
  *
- * * any combination of the previous two kinds of headers appearing
+ * - any combination of the previous two kinds of headers appearing
  *   continuous, until the first non-blank non-package line.
  */
+
  pub fn extract_java_headers(contents: &String) -> String {
      enum State {
          Init,
@@ -203,6 +204,4 @@ mod tests {
         let expected = String::from(" some contents\n");
         assert_eq!(expected, result);
     }
-
-
 }
