@@ -106,7 +106,7 @@
 
 
 #[cfg(test)]
-mod tests {
+mod tests_extract_java_headers {
     use super::extract_java_headers;
 
     #[test]

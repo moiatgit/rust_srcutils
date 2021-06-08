@@ -1,0 +1,32 @@
+@startuml
+
+[*] --> INIT
+
+INIT --> PACKAGE: 'p'
+INIT --> OPENBAR: '/'
+INIT --> INIT: '\s'
+INIT --> [*]: otherwise
+
+PACKAGE --> PACKAGE: expected letter
+PACKAGE --> [*]: unexpected letter
+PACKAGE --> NOPACKAGE: finished package sentence
+
+OPENBAR --> LINE: '/'
+OPENBAR --> MULTILINE: '*'
+OPENBAR --> [*]: otherwise
+
+NOPACKAGE --> OPENBAR: '/'
+NOPACKAGE --> NOPACKAGE: '\s'
+NOPACKAGE --> [*]: otherwise
+
+LINE --> NOPACKAGE: $
+LINE --> LINE: otherwise
+
+MULTILINE --> ENDMULTILINE: '*'
+MULTILINE --> MULTILINE: otherwise
+
+ENDMULTILINE --> ENDMULTILINE: '*'
+ENDMULTILINE --> NOPACKAGE: '/'
+ENDMULTILINE --> MULTILINE: otherwise
+
+@enduml
